@@ -42,6 +42,7 @@ ${_footer}"
   _body="${_body}" \
   GITHUB_EVENT_PATH="${GITHUB_EVENT_PATH}" \
   python3 -c "import requests, os, json
-comments_url = json.load(open(os.environ['GITHUB_EVENT_PATH'], 'r'))['pull_request']['comments_url']
+data = json.load(open(os.environ['GITHUB_EVENT_PATH'], 'r'))
+comments_url = data.get('pull_request', data.get('issues'))['comments_url']
 response = requests.post(comments_url, auth=(os.environ['_user'], os.environ['_token']), json={'body':os.environ['_body']})
 print(response)"
