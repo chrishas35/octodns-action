@@ -29,6 +29,10 @@ inputs:
     description: "The URL to post comments to example: https://api.github.com/repos/<owner>/<repo>/issues/<number>/comments"
     default: ${{ github.event.pull_request.comments_url }}
     required: true
+  poetry:
+    description: 'Use poetry to execute the action or not'
+    required: true
+    default: 'false'
 outputs:
   log:
     description: '`octodns-sync` command output'
@@ -46,6 +50,7 @@ runs:
         CONFIG_PATH: ${{ inputs.config_path }}
         DOIT: ${{ inputs.doit }}
         FORCE: ${{ inputs.force }}
+        POETRY: ${{ inputs.poetry }}
       run: ${{ github.action_path }}/scripts/run.sh
       shell: bash
       working-directory: ${{ github.workspace }}
