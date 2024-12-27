@@ -31,7 +31,13 @@ else
   _force=
 fi
 
-if ! octodns-sync --config-file="${_config_path}" ${_doit} ${_force} \
+if [ "${POETRY}" = "true" ] || [ "${POETRY}" = true ]; then
+  CMD="poetry run octodns-sync"
+else
+  CMD="octodns-sync"
+fi
+
+if ! ${CMD} --config-file="${_config_path}" ${_doit} ${_force} \
 1>"${_planfile}" 2>"${_logfile}"; then
   echo "FAIL: octodns-sync exited with an error."
   echo "FAIL: Here are the contents of ${_logfile}:"
