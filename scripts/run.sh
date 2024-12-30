@@ -10,6 +10,7 @@
 _config_path=$CONFIG_PATH
 _doit=$DOIT
 _force=$FORCE
+_zones=$ZONES
 
 # Run octodns-sync.
 _logfile="${GITHUB_WORKSPACE}/octodns-sync.log"
@@ -37,7 +38,7 @@ else
   CMD="octodns-sync"
 fi
 
-if ! ${CMD} --config-file="${_config_path}" ${_doit} ${_force} \
+if ! ${CMD} --config-file="${_config_path}" ${_doit} ${_force} ${_zones} \
 1>"${_planfile}" 2>"${_logfile}"; then
   echo "FAIL: octodns-sync exited with an error."
   echo "FAIL: Here are the contents of ${_logfile}:"
