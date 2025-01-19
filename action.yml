@@ -61,6 +61,7 @@ runs:
         FORCE: ${{ inputs.force }}
         ZONES: ${{ inputs.zones }}
         POETRY: ${{ inputs.poetry }}
+        UV: ${{ inputs.uv }}
       run: ${{ github.action_path }}/scripts/run.sh
       shell: bash
       working-directory: ${{ github.workspace }}
