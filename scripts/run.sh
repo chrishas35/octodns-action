@@ -33,10 +33,13 @@ else
 fi
 
 if [ "${POETRY}" = "true" ] || [ "${POETRY}" = true ]; then
+  echo "INFO: Running octodns-sync with poetry"
   CMD="poetry run octodns-sync"
 elif [ "${UV}" = "true" ] || [ "${UV}" = true ]; then
+  echo "INFO: Running octodns-sync with uv"
   CMD="uv run octodns-sync"
 else
+  echo "INFO: Running octodns-sync"
   CMD="octodns-sync"
 fi
 
