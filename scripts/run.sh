@@ -34,6 +34,8 @@ fi
 
 if [ "${POETRY}" = "true" ] || [ "${POETRY}" = true ]; then
   CMD="poetry run octodns-sync"
+elif [ "${UV}" = "true" ] || [ "${UV}" = true ]; then
+  CMD="uv run octodns-sync"
 else
   CMD="octodns-sync"
 fi

@@ -38,6 +38,10 @@ inputs:
     description: 'Use poetry to execute the action or not'
     required: true
     default: 'false'
+  uv:
+    description: 'Use uv to execute the action or not'
+    required: true
+    default: 'false'
 outputs:
   log:
     description: '`octodns-sync` command output'
